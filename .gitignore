@@ -1,0 +1,12 @@
+.state/
+.runtime/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+build/
+dist/
+.DS_Store
+.env
+.env.*
+!.env.example

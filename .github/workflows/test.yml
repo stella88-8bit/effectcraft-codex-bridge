@@ -1,0 +1,32 @@
+name: Tests
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  unit:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Unit and HTTP contract tests
+        run: python -m unittest discover -s tests -v
+      - name: Compile source and examples
+        run: python -m compileall -q effectcraft_codex bridge.py examples
+      - name: Command-line help
+        run: |
+          python bridge.py --help
+          python examples/api_client.py --help
+
+# CI не содержит GUI, upstream CLI и пользовательских проектов.
+# Реальное подключение и рендер проверяются отдельно в установленном EffectCraft.

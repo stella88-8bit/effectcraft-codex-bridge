@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=65"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "effectcraft-codex-bridge"
+version = "1.0.0"
+description = "Local Codex integration for EffectCraft: official MCP launcher and authenticated HTTP API"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+dependencies = []
+
+[project.scripts]
+effectcraft-codex = "effectcraft_codex.__main__:main"
+
+[tool.setuptools]
+packages = ["effectcraft_codex"]

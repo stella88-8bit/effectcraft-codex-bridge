@@ -1,0 +1,23 @@
+# Образец секций Codex config.toml. Это пример, а не файл для копирования целиком.
+# Замените /absolute/path/... реальными абсолютными путями на своём компьютере.
+# Предпочтительно зарегистрировать автоматически:
+#   python3 bridge.py install-codex
+# После регистрации перезапустите MCP-подключение/чат, чтобы увидеть инструменты.
+
+# Live: официальный MCP управляет окном EffectCraft через control channel.
+[mcp_servers.effectcraft-codex]
+command = "/absolute/path/to/python3"
+args = ["/absolute/path/to/effectcraft-codex-bridge/bridge.py", "mcp", "--port", "9877"]
+
+# Дополнительный отдельный сервер без окна. Работает в своей сессии.
+# Не включайте его вместо live, если требуется изменить видимый проект.
+[mcp_servers.effectcraft-headless]
+command = "/absolute/path/to/python3"
+args = ["/absolute/path/to/effectcraft-codex-bridge/bridge.py", "mcp", "--headless"]
+
+# Пример ограниченного нативного MCP — раскомментируйте при необходимости.
+# Скрипты и инструменты управления UI при confinement будут недоступны.
+# Это прямой upstream CLI: ограничения НЕ применяются к HTTP API обёртки.
+# [mcp_servers.effectcraft-confined]
+# command = "/absolute/path/to/effectcraft-cli"
+# args = ["mcp", "--empty", "--autosave", "--automation-read-root", "/absolute/path/to/assets", "--automation-write-root", "/absolute/path/to/output"]
