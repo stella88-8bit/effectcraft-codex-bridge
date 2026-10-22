@@ -118,7 +118,7 @@ class _Handler(BaseHTTPRequestHandler):
             target = urlsplit(self.path)
             if target.fragment:
                 raise ValueError()
-            query = parse_qs(target.query, keep_blank_values=True, strict_parsing=True, max_num_fields=8)
+            query = {} if not target.query else parse_qs(target.query, keep_blank_values=True, strict_parsing=True, max_num_fields=8)
         except ValueError:
             raise _InputError("Invalid request target or query.") from None
         for value in query.values():
